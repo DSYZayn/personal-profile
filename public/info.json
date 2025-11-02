@@ -6,31 +6,37 @@
     "avatar": "/avatar.jpg"
   },
   "social": {
-    "github": "#",
-    "zhihu": "#",
-    "xiaohongshu": "#",
-    "blog": "#",
+    "github": "https://github.com/dsyzayn",
+    "zhihu": "https://www.zhihu.com/people/dong-sheng-yu-19",
+    "xiaohongshu": "https://www.xiaohongshu.com/user/profile/62f12472000000001f015069",
+    "blog": "https://blog.dongsy.com.cn",
     "researchgate": "https://www.researchgate.net/profile/Xingyu-Chen-105"
   },
   "education": [
-    { "id": "edu1", "text": "M.Sc.(Earth and Planetary Sciences), State Key Laboratory of Lunar and Planetary Sciences, Macau University of Science and Technology (2025–present)" },
-    { "id": "edu2", "text": "B.S.(Geographic Information Science), Jilin University (2021–2025)" }
+    { "id": "edu1", "text": "M.Sc. (Earth and Planetary Sciences), State Key Laboratory of Lunar and Planetary Sciences, Macau University of Science and Technology (2025–present)" },
+    { "id": "edu2", "text": "B.S. (Geographic Information Science), Jilin University (2021–2025)" }
   ],
   "work": [
-    { "id": "w1", "text": "Intern — Example Corp (2024) · Assisted in research and development of demo features." },
-    { "id": "w2", "text": "Research Assistant — University Lab (2023) · Supported experiments and literature reviews." }
+    { "id": "w1", "text": "Research Assistant — RS&GIS Lab in Jilin University (2023-present)" }
   ],
   "publications": [
-    { "id": "ph1", "title": "Example Paper: Lightweight Methods for XYZ", "authors": "Demo Author, Coauthor", "year": "2024", "journal": "Conference Demo", "url": "https://example.com/paper1", "summary": "This is a placeholder abstract used to demonstrate the publication entry layout." },
-    { "id": "ph2", "title": "Example Paper: Large-scale Analysis of Data Structures", "authors": "Demo Author", "year": "2023", "journal": "Journal Demo", "url": "https://example.com/paper2", "summary": "A short placeholder abstract for the second example publication." },
-    { "id": "ph3", "title": "Example Paper: Large-scale Analysis of Data Structures", "authors": "Demo Author", "year": "2023", "journal": "Journal Demo", "url": "https://www.researchgate.net/profile/Xingyu_Chen", "summary": "A short placeholder abstract for the second example publication." }
+    { "id": "ph1", "title": "ResGAT-F: a novel graph neural network-based approach for evaluating landing suitability in the lunar southern polar region", "authors": "Shibo Wen, Yongzhi Wang, Xingyu Chen et al.", "year": "2025", "journal": "International Journal of Digital Earth", "url": "https://www.researchgate.net/publication/394536638_ResGAT-F_a_novel_graph_neural_network-based_approach_for_evaluating_landing_suitability_in_the_lunar_southern_polar_region", "summary": "-" },
+    { "id": "ph2", "title": "Graph attention network-based mineral prospectivity prediction: A case study of copper exploration in eastern Tien Shan, China", "authors": "Shiting Sheng, Yongzhi Wang, Jiangtao Tian, Xingyu Chen et al.", "year": "2025", "journal": "Ore Geology Reviews", "url": "https://example.com/paper2", "summary": "-" },
+    { "id": "ph3", "title": "Construction technology of super-agents for intelligent mineral resources prediction driven by large model (Chinese)", "authors": "Yongzhi Wang, Shibo Wen, Bowen Li, Xingyu Chen et al.", "year": "2025", "journal": "Earth Science Frontiers(Chinese)", "url": "https://www.researchgate.net/publication/395534644_Construction_technology_of_super-agents_for_intelligent_mineral_resources_prediction_driven_by_large_model_Chinese", "summary": "-" }
   ],
   "patents": [
-    { "id": "p1", "title": "Patent A — A brief description.", "year": "2024" },
-    { "id": "p2", "title": "Patent B — A brief description.", "year": "2024" },
-    { "id": "p3", "title": "Patent C — A brief description.", "year": "2024" }
+    { "id": "p1", "title": "Lunar Landing Site Evaluation System Based on ResGAT-F (Copyright No. 2025SR0857324, China)", "year": "2025" },
+    { "id": "p2", "title": "Lunar Rille Auto-Detection System Based on Deep-Learning Semantic Segmentation (Copyright No. 2025SR0857259, China)", "year": "2025" },
+    { "id": "p3", "title": "Lunar Landing Site Assessment System Based on Self-Organizing Map (SOM) (Copyright No. 2025SR0859061, China)", "year": "2025" }
   ],
   "rewards": [
-    { "id": "r1", "title": "Award X — Awarded for outstanding research in XYZ.", "year": "2024" }
+    { "id": "r1", "title": "Full Scholarship for Excellent Academic Achievement, Macau University of Science and Technology", "year": "2025" },
+    { "id": "r2", "title": "Meritorious Winner (First Prize, top 4%), MCM", "year": "2024" },
+    { "id": "r3", "title": "Honorable Mention (Second Prize, top 20%), ICM", "year": "2022" },
+    { "id": "r4", "title": "Honorable Mention (Second Prize, top 20%), ICM", "year": "2023" },
+    { "id": "r5", "title": "Provincial Third Prize, National College GIS Skills Competition - Remote Sensing Analysis Group", "year": "2022" },
+    { "id": "r6", "title": "Second Prize, Jilin University Scholarship", "year": "2022" },
+    { "id": "r7", "title": "Provincial Second Prize, China Undergraduate Mathematical Modeling Contest", "year": "2022" },
+    { "id": "r8", "title": "Second Prize, MathorCup High School Mathematics Model Challenge - Large Number Challenge", "year": "2022" }
   ]
 }
