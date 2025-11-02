@@ -23,6 +23,7 @@ jobs:
 
       - name: Enable corepack and pnpm
         run: |
+          npm install -g pnpm
           corepack enable
           corepack prepare pnpm@latest --activate
 
