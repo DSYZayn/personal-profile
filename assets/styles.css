@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* keep empty :root removed */
+/* Minimal stylesheet: most visual styling moved to Tailwind utility classes in templates */
+html,body,#__nuxt{height:100%}
+body{
+  margin:0;
+  font-family: "Times New Roman", Times, serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Default page background (day mode = white). The .dark class on <html> will switch this before hydration via app.html inline script. */
+body{
+  background-color: #ffffff;
+}
+.dark body{
+  background-color: #071025;
+}
+
+/* Responsive fallback if needed */
+@media (max-width:880px){
+  /* layout controlled by Tailwind classes in templates */
+}
+
+/* Utility: clamp to 2 lines with ellipsis for long titles (used where tailwind line-clamp isn't available) */
+.clamp-2 {
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Theme-aware custom scrollbar for inner scroll containers */
+:root{
+  --sb-track: rgba(2,6,23,0.04);
+  --sb-thumb: rgba(2,6,23,0.12);
+  --sb-thumb-hover: rgba(2,6,23,0.18);
+}
+.dark{
+  --sb-track: rgba(255,255,255,0.04);
+  --sb-thumb: rgba(255,255,255,0.12);
+  --sb-thumb-hover: rgba(255,255,255,0.18);
+}
+
+.custom-scrollbar{
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
+}
+.custom-scrollbar::-webkit-scrollbar{width:10px;height:10px}
+.custom-scrollbar::-webkit-scrollbar-track{background:var(--sb-track);border-radius:9999px}
+.custom-scrollbar::-webkit-scrollbar-thumb{background:var(--sb-thumb);border-radius:9999px;border:2px solid transparent;background-clip:padding-box}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover{background:var(--sb-thumb-hover)}

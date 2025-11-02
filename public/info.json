@@ -1,0 +1,36 @@
+{
+  "profile": {
+    "name": "Xingyu Chen",
+    "email": "dongsy030202@gmail.com",
+    "tagline": "Interested in machine learning, planetary science.",
+    "avatar": "/avatar.jpg"
+  },
+  "social": {
+    "github": "#",
+    "zhihu": "#",
+    "xiaohongshu": "#",
+    "blog": "#",
+    "researchgate": "https://www.researchgate.net/profile/Xingyu-Chen-105"
+  },
+  "education": [
+    { "id": "edu1", "text": "M.Sc.(Earth and Planetary Sciences), State Key Laboratory of Lunar and Planetary Sciences, Macau University of Science and Technology (2025–present)" },
+    { "id": "edu2", "text": "B.S.(Geographic Information Science), Jilin University (2021–2025)" }
+  ],
+  "work": [
+    { "id": "w1", "text": "Intern — Example Corp (2024) · Assisted in research and development of demo features." },
+    { "id": "w2", "text": "Research Assistant — University Lab (2023) · Supported experiments and literature reviews." }
+  ],
+  "publications": [
+    { "id": "ph1", "title": "Example Paper: Lightweight Methods for XYZ", "authors": "Demo Author, Coauthor", "year": "2024", "journal": "Conference Demo", "url": "https://example.com/paper1", "summary": "This is a placeholder abstract used to demonstrate the publication entry layout." },
+    { "id": "ph2", "title": "Example Paper: Large-scale Analysis of Data Structures", "authors": "Demo Author", "year": "2023", "journal": "Journal Demo", "url": "https://example.com/paper2", "summary": "A short placeholder abstract for the second example publication." },
+    { "id": "ph3", "title": "Example Paper: Large-scale Analysis of Data Structures", "authors": "Demo Author", "year": "2023", "journal": "Journal Demo", "url": "https://www.researchgate.net/profile/Xingyu_Chen", "summary": "A short placeholder abstract for the second example publication." }
+  ],
+  "patents": [
+    { "id": "p1", "title": "Patent A — A brief description.", "year": "2024" },
+    { "id": "p2", "title": "Patent B — A brief description.", "year": "2024" },
+    { "id": "p3", "title": "Patent C — A brief description.", "year": "2024" }
+  ],
+  "rewards": [
+    { "id": "r1", "title": "Award X — Awarded for outstanding research in XYZ.", "year": "2024" }
+  ]
+}
