@@ -117,7 +117,9 @@ onMounted(async () => {
 
   // Load everything from /info.json (single source of truth)
   try {
-    const res = await fetch('/info.json')
+    // Use the build/runtime base URL so this works when the site is served under a subpath
+    const base = import.meta.env.BASE_URL || '/'
+    const res = await fetch(`${base}info.json`)
     if (res.ok) {
       const json = await res.json()
       profile.value = json.profile || profile.value
