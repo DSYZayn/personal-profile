@@ -21,17 +21,13 @@ jobs:
           node-version: '18'
           cache: 'pnpm'
 
-      - name: Enable corepack and pnpm
+      - name: Enable pnpm
         run: |
           npm install -g pnpm
-          corepack enable
-          corepack prepare pnpm@latest --activate
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Generate static site
-        # Nuxt 项目提供了 `generate` 脚本（package.json 中），此步会把静态文件输出到 `dist`
         run: pnpm generate
 
       - name: Deploy to gh-pages
