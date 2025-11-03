@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-white dark:bg-gradient-to-b dark:from-[#071025] dark:to-[#081226]">
     <div class="mx-auto md:w-3/4 w-full py-12 px-7 text-slate-900 dark:text-slate-100">
   <div class="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-7">
-  <div class="min-h-0 flex flex-col gap-7">
+  <div class="min-h-0 flex flex-col gap-2">
         <ProfileCard
           :name="profile.name"
           :email="profile.email"
@@ -21,10 +21,22 @@
         <Section title="Work Experience">
           <div v-for="w in work" :key="w.id || w.text" class="p-3 rounded-lg mb-2 bg-white border border-slate-200 dark:bg-slate-800 dark:border-slate-700">{{ w.text }}</div>
         </Section>
+        
+        <Section title="Memo">
+          <!-- limit visible height to roughly two items; enable internal scroll when more -->
+          <div class="overflow-auto max-h-[12rem] custom-scrollbar">
+            <div class="divide-y divide-slate-100 dark:divide-slate-700">
+              <div v-for="m in memos" :key="m.id || m.text" class="p-3 rounded-lg mb-2 bg-white border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+                <!-- Memo only needs note; limit each item to 2 lines -->
+                <div class="text-sm clamp-4 whitespace-pre-wrap break-words">{{ m.note || m.text || '' }}</div>
+              </div>
+            </div>
+          </div>
+        </Section>
       </div>
       <div class="min-h-0">
         <!-- Right column: split into three vertical sections that share height on md+ and stack on small screens -->
-  <div class="flex flex-col md:h-full min-h-0 gap-7">
+  <div class="flex flex-col md:h-full min-h-0 gap-2">
           <!-- Publications: scrolls internally when overflow -->
           <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[33vh] overflow-hidden">
             <Section class="flex-1 min-h-0">
@@ -93,6 +105,7 @@ const socialLinks = ref({})
 const publications = ref([])
 const education = ref([])
 const work = ref([])
+const memos = ref([])
 const patents = ref([])
 const rewards = ref([])
 
@@ -125,6 +138,7 @@ onMounted(async () => {
       publications.value = Array.isArray(json.publications) ? json.publications : publications.value
       education.value = Array.isArray(json.education) ? json.education : education.value
       work.value = Array.isArray(json.work) ? json.work : work.value
+        memos.value = Array.isArray(json.memos) ? json.memos : memos.value
       patents.value = Array.isArray(json.patents) ? json.patents : patents.value
       rewards.value = Array.isArray(json.rewards) ? json.rewards : rewards.value
     } else {
