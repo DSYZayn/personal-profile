@@ -1,7 +1,7 @@
 <template>
-  <div class="h-screen overflow-hidden bg-white dark:bg-gradient-to-b dark:from-[#071025] dark:to-[#081226]">
-    <div class="mx-auto md:w-3/4 w-full py-12 px-7 text-slate-900 dark:text-slate-100 h-full">
-  <div class="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-7 h-full">
+  <div class="min-h-screen bg-white dark:bg-gradient-to-b dark:from-[#071025] dark:to-[#081226]">
+    <div class="mx-auto md:w-3/4 w-full py-12 px-7 text-slate-900 dark:text-slate-100">
+  <div class="grid grid-cols-1 md:grid-cols-[360px_1fr] gap-7">
   <div class="min-h-0 flex flex-col gap-7">
         <ProfileCard
           :name="profile.name"
@@ -24,10 +24,10 @@
       </div>
       <div class="min-h-0">
         <!-- Right column: split into three vertical sections that share height on md+ and stack on small screens -->
-        <div class="flex flex-col h-full min-h-0 gap-7">
+  <div class="flex flex-col md:h-full min-h-0 gap-7">
           <!-- Publications: scrolls internally when overflow -->
-          <div class="min-h-0 flex flex-col md:max-h-[calc((100%-3.5rem)/3)]">
-            <Section class="h-full">
+          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[33vh] overflow-hidden">
+            <Section class="flex-1 min-h-0">
               <template #title>
                 <a :href="socialLinks.researchgate || '#'
                 " target="_blank" rel="noopener" class="hover:underline">Publications ({{ publications.length }})</a>
@@ -48,8 +48,8 @@
           </div>
 
           <!-- Patents & Softwares -->
-          <div class="min-h-0 flex flex-col md:max-h-[calc((100%-3.5rem)/3)]">
-            <Section :title="`Patents & Softwares (${patents.length})`" class="h-full">
+          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[33vh] overflow-hidden">
+            <Section :title="`Patents & Softwares (${patents.length})`" class="flex-1 min-h-0">
               <div class="overflow-auto min-h-0 flex-1 custom-scrollbar">
                 <div class="divide-y divide-slate-100 dark:divide-slate-700">
                   <div v-for="pt in patents" :key="pt.id || pt.title" class="p-3">
@@ -62,8 +62,8 @@
           </div>
 
           <!-- Rewards -->
-          <div class="min-h-0 flex flex-col md:max-h-[calc((100%-3.5rem)/3)]">
-            <Section :title="`Rewards (${rewards.length})`" class="h-full">
+          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[33vh] overflow-hidden">
+            <Section :title="`Rewards (${rewards.length})`" class="flex-1 min-h-0">
               <div class="overflow-auto min-h-0 flex-1 custom-scrollbar">
                 <div class="divide-y divide-slate-100 dark:divide-slate-700">
                   <div v-for="r in rewards" :key="r.id || r.title" class="p-3">
