@@ -1,7 +1,7 @@
 {
   "profile": {
     "name": "Xingyu Chen \n(陳星宇)",
-    "email": "dongsy030202@gmail.com",
+    "email": "dong030202@gmail.com",
     "tagline": "My interests include astrochemistry and astrophysics crossing with AI.",
     "avatar": "/avatar.jpg"
   },
@@ -36,8 +36,8 @@
     { "id": "r1", "title": "Outstanding Student Oral Presentation of The Third National Conference of Data-driven Earth Science Development (Fusion of AI and Earth System Science)", "year": "2025" },
     { "id": "r2", "title": "Full Scholarship for Excellent Academic Achievement, Macau University of Science and Technology", "year": "2025" },
     { "id": "r3", "title": "Meritorious Winner (First Prize, top 4%), The Mathematical Contest in Modeling (MCM, COMAP)", "year": "2024" },
-    { "id": "r4", "title": "Honorable Mention (Second Prize, top 20%), The Interdisciplinary Contest in Modeling (ICM, COMAP)", "year": "2022" },
-    { "id": "r5", "title": "Honorable Mention (Second Prize, top 20%), The Interdisciplinary Contest in Modeling (ICM, COMAP)", "year": "2023" },
+    { "id": "r4", "title": "Honorable Mention (Second Prize, top 20%), The Interdisciplinary Contest in Modeling (ICM, COMAP)", "year": "2023" },
+    { "id": "r5", "title": "Honorable Mention (Second Prize, top 20%), The Interdisciplinary Contest in Modeling (ICM, COMAP)", "year": "2022" },
     { "id": "r6", "title": "Provincial Third Prize, National College GIS Skills Competition - Remote Sensing Analysis Group", "year": "2022" },
     { "id": "r7", "title": "Second Prize, Jilin University Scholarship", "year": "2022" },
     { "id": "r8", "title": "Provincial Second Prize, China Undergraduate Mathematical Modeling Contest", "year": "2022" },

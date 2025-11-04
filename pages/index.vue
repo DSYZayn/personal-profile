@@ -73,9 +73,9 @@
             </Section>
           </div>
 
-          <!-- Rewards -->
+          <!-- Awards & Honors -->
           <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[33vh] overflow-hidden">
-            <Section :title="`Rewards (${rewards.length})`" class="flex-1 min-h-0">
+            <Section :title="`Awards & Honors (${rewards.length})`" class="flex-1 min-h-0">
               <div class="overflow-auto min-h-0 flex-1 custom-scrollbar">
                 <div class="divide-y divide-slate-100 dark:divide-slate-700">
                   <div v-for="r in rewards" :key="r.id || r.title" class="p-3">
@@ -91,6 +91,36 @@
       </div>
     </div>
   </div>
+    <!-- Floating action buttons (desktop) / bottom CTA (mobile) -->
+    <div class="md:fixed md:right-4 md:bottom-6 z-50 flex flex-col items-end gap-3">
+      <!-- Back to top: visible on md+ only (polished for light mode contrast) -->
+      <button
+        @click="scrollToTop"
+        class="hidden md:inline-flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-slate-800 backdrop-blur-sm border border-slate-200 dark:border-slate-700 shadow-2xl hover:scale-105 active:scale-100 transform transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-sky-300/40"
+        title="Back to top"
+        aria-label="Back to top"
+      >
+        <!-- polished up arrow (higher contrast on light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-sky-600" viewBox="0 0 20 20" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 11.5L10 6l5.5 5.5" />
+        </svg>
+      </button>
+
+      <!-- Details / Download button: fixed on md+, static (full-width) on small screens -->
+      <a
+        href="/cv_xingyuchen_planetary_science_AI.pdf"
+        download
+        class="w-full md:w-auto inline-flex items-center justify-center gap-3 px-4 bg-gradient-to-r from-sky-500 to-indigo-600 text-white rounded-md shadow-xl hover:scale-105 transform transition-all disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-sky-400 text-sm md:text-base h-12 md:h-10"
+        aria-label="Download my CV pdf for more details"
+        title="Download my CV for more details"
+      >
+        <!-- download icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3 3a1 1 0 000 2h14a1 1 0 100-2H3zM9 7a1 1 0 012 0v4.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L9 11.586V7z" clip-rule="evenodd" />
+        </svg>
+        <span class="font-medium">More details?</span>
+      </a>
+    </div>
 </template>
 
 <script setup>
@@ -120,6 +150,16 @@ function applyTheme(t) {
 function toggleTheme() {
   theme.value = theme.value === 'light' ? 'dark' : 'light'
   localStorage.setItem('theme', theme.value)
+}
+
+// Smooth scroll to top for the "Back to top" button
+function scrollToTop() {
+  try {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  } catch (e) {
+    // fallback
+    window.scrollTo(0, 0)
+  }
 }
 
 onMounted(async () => {
