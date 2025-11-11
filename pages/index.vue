@@ -35,10 +35,10 @@
         </Section>
       </div>
       <div class="min-h-0">
-        <!-- Right column: split into three vertical sections that share height on md+ and stack on small screens -->
+        <!-- Right column: split into vertical sections that share height on md+ and stack on small screens -->
   <div class="flex flex-col md:h-full min-h-0 gap-2">
           <!-- Publications: scrolls internally when overflow -->
-          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[33vh] overflow-hidden">
+          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[25vh] overflow-hidden">
             <Section class="flex-1 min-h-0">
               <template #title>
                 <a :href="socialLinks.researchgate || '#'
@@ -59,28 +59,44 @@
             </Section>
           </div>
 
-          <!-- Patents & Softwares -->
-          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[33vh] overflow-hidden">
-            <Section :title="`Patents & Softwares (${patents.length})`" class="flex-1 min-h-0">
+          <!-- Grants -->
+          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[25vh] overflow-hidden">
+            <Section :title="`Grants (${grants.length})`" class="flex-1 min-h-0">
               <div class="overflow-auto min-h-0 flex-1 custom-scrollbar">
                 <div class="divide-y divide-slate-100 dark:divide-slate-700">
-                  <div v-for="pt in patents" :key="pt.id || pt.title" class="p-3">
-                    <div class="font-semibold"><span class="clamp-2">{{ pt.title || pt.text || '' }}</span></div>
-                    <div class="text-sm text-slate-400 mt-1">{{ pt.year || '' }}</div>
+                  <div v-for="g in grants" :key="g.id || g.title" class="p-3">
+                    <div class="font-semibold"><span class="clamp-2">{{ g.title || g.text || '' }}</span></div>
+                    <div class="text-sm text-slate-400 mt-1">{{ g.year || g.amount || '' }}</div>
+                    <div v-if="g.sponsor" class="text-sm text-slate-400">{{ g.sponsor }}</div>
                   </div>
+                  <div v-if="!grants.length" class="p-3 text-sm text-slate-400">No grants to display yet.</div>
                 </div>
               </div>
             </Section>
           </div>
 
           <!-- Awards & Honors -->
-          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[33vh] overflow-hidden">
+          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[25vh] overflow-hidden">
             <Section :title="`Awards & Honors (${rewards.length})`" class="flex-1 min-h-0">
               <div class="overflow-auto min-h-0 flex-1 custom-scrollbar">
                 <div class="divide-y divide-slate-100 dark:divide-slate-700">
                   <div v-for="r in rewards" :key="r.id || r.title" class="p-3">
                     <div class="font-semibold"><span class="clamp-2">{{ r.title || r.text || '' }}</span></div>
                     <div class="text-sm text-slate-400 mt-1">{{ r.year || '' }}</div>
+                  </div>
+                </div>
+              </div>
+            </Section>
+          </div>
+
+          <!-- Patents & Softwares -->
+          <div class="min-h-0 flex flex-col max-h-[50vh] md:max-h-[25vh] overflow-hidden">
+            <Section :title="`Patents & Softwares (${patents.length})`" class="flex-1 min-h-0">
+              <div class="overflow-auto min-h-0 flex-1 custom-scrollbar">
+                <div class="divide-y divide-slate-100 dark:divide-slate-700">
+                  <div v-for="pt in patents" :key="pt.id || pt.title" class="p-3">
+                    <div class="font-semibold"><span class="clamp-2">{{ pt.title || pt.text || '' }}</span></div>
+                    <div class="text-sm text-slate-400 mt-1">{{ pt.year || '' }}</div>
                   </div>
                 </div>
               </div>
@@ -138,6 +154,18 @@ const work = ref([])
 const memos = ref([])
 const patents = ref([])
 const rewards = ref([])
+const grants = ref([])
+
+function extractYear(value) {
+  if (value === undefined || value === null) return Number.NEGATIVE_INFINITY
+  const match = String(value).match(/\d{4}/)
+  return match ? Number(match[0]) : Number.NEGATIVE_INFINITY
+}
+
+function sortByYearDesc(items, valueResolver) {
+  if (!Array.isArray(items)) return []
+  return [...items].sort((a, b) => extractYear(valueResolver(b)) - extractYear(valueResolver(a)))
+}
 
 // default to light theme
 const theme = ref('light')
@@ -175,12 +203,21 @@ onMounted(async () => {
       const json = await res.json()
       profile.value = json.profile || profile.value
       socialLinks.value = json.social || socialLinks.value
-      publications.value = Array.isArray(json.publications) ? json.publications : publications.value
+      publications.value = Array.isArray(json.publications)
+        ? sortByYearDesc(json.publications, (item) => item.year || item.date)
+        : publications.value
       education.value = Array.isArray(json.education) ? json.education : education.value
       work.value = Array.isArray(json.work) ? json.work : work.value
-        memos.value = Array.isArray(json.memos) ? json.memos : memos.value
-      patents.value = Array.isArray(json.patents) ? json.patents : patents.value
-      rewards.value = Array.isArray(json.rewards) ? json.rewards : rewards.value
+      memos.value = Array.isArray(json.memos) ? json.memos : memos.value
+      patents.value = Array.isArray(json.patents)
+        ? sortByYearDesc(json.patents, (item) => item.year)
+        : patents.value
+      rewards.value = Array.isArray(json.rewards)
+        ? sortByYearDesc(json.rewards, (item) => item.year)
+        : rewards.value
+      grants.value = Array.isArray(json.grants)
+        ? sortByYearDesc(json.grants, (item) => item.year || item.amount)
+        : grants.value
     } else {
       console.warn('Failed to load /info.json: ', res.status)
     }
