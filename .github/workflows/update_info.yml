@@ -18,7 +18,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check-if-info-changed-only:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+      - name: Check if only info.json changed
+        id: check
+        run: |
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
+
+          ONLY_INFO_JSON=true
+          for f in $CHANGED_FILES; do
+            if [ "$f" != "public/info.json" ]; then
+              ONLY_INFO_JSON=false
+            fi
+          done
+
+          echo "only_info_json=$ONLY_INFO_JSON"
+          echo "info_changed=$ONLY_INFO_JSON" >> $GITHUB_OUTPUT
+
+
   build:
+    needs: check-if-info-changed-only
+    if: needs.check-if-info-changed-only.outputs.info_changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Download dist artifact
@@ -36,11 +62,12 @@ jobs:
           path: ./dist
 
   deploy:
+    needs: build
+    if: needs.check-if-info-changed-only.outputs.info_changed == 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
