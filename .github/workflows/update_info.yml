@@ -52,7 +52,7 @@ jobs:
       - name: Download dist artifact
         uses: actions/download-artifact@v4
         with:
-          name: dist
+          name: github-pages
           path: ./dist
 
       - name: Copy info.json to dist
