@@ -70,7 +70,7 @@ jobs:
         run: |
           echo "Files in dist directory before untar:"
           ls -la ./dist
-          tar -xzf ./dist/dist.zip -C ./dist
+          tar -xf ./dist/artifact.tar -C ./dist
           echo "Files in dist directory after untar:"
           ls -la ./dist
 
