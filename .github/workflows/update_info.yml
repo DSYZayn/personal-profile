@@ -7,7 +7,7 @@ on:
     paths:
       - "public/info.json"
       - ".github/workflows/*.yml"
-
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -31,6 +31,11 @@ jobs:
       - name: Check if only info.json changed
         id: check
         run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "✅ 手动触发，跳过文件检查，直接执行后续步骤"
+            echo "info_changed=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
           CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
           echo "Changed files:"
           echo "$CHANGED_FILES"
@@ -61,6 +66,7 @@ jobs:
           workflow: nuxtjs.yml
           name: github-pages
           path: ./dist
+          allow_forks: true
 
       - name: Copy info.json to dist
         run: cp public/info.json ./dist/info.json
