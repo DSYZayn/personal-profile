@@ -8,8 +8,9 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-    paths-ignore:
-      - 'public/info.json'
+    paths:
+      - '**'
+      - '!public/info.json'
   
 
   # Allows you to run this workflow manually from the Actions tab

@@ -50,8 +50,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download dist artifact
-        uses: actions/download-artifact@v5
+        uses: dawidd6/action-download-artifact@v14
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: nuxtjs.yml
           name: github-pages
           path: ./dist
 
