@@ -67,6 +67,7 @@ jobs:
           name: github-pages
           path: ./dist
           allow_forks: true
+          use_unzip: true
 
       - name: Copy info.json to dist
         run: cp public/info.json ./dist/info.json
