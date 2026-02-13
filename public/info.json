@@ -14,7 +14,7 @@
   },
   "education": [
     { "id": "edu1", "text": "MPhil (Earth and Planetary Sciences), SKL, Planets, Macau (2025–present) · Supervised by Prof. Yunzhao Wu" },
-    { "id": "edu2", "text": "BSc (Geographic Information Science), Jilin University (2021–2025) · Supervised by Prof. Yongzhi Wang" }
+    { "id": "edu2", "text": "BSc. (Geographic Information Science), Jilin University (2021–2025) · Supervised by Prof. Yongzhi Wang" }
   ],
   "work": [
     { "id": "w1", "text": "Research Assistant — RS&GIS Lab in Jilin University (2023-present)" }
