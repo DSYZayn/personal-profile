@@ -66,11 +66,13 @@ jobs:
           workflow: nuxtjs.yml
           name: github-pages
           path: ./dist
-          allow_forks: true
           use_unzip: true
 
       - name: Copy info.json to dist
-        run: cp public/info.json ./dist/info.json
+        run: |
+          echo "Files in current directory:"
+          ls -la
+          cp public/info.json ./dist/info.json
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
