@@ -65,13 +65,17 @@ jobs:
           workflow: nuxtjs.yml
           name: github-pages
           path: ./dist
-          use_unzip: true
+      
+      - name: untar dist artifact
+        run: |
+          echo "Files in dist directory before untar:"
+          ls -la ./dist
+          tar -xzf ./dist/dist.zip -C ./dist
+          echo "Files in dist directory after untar:"
+          ls -la ./dist
 
       - name: Copy info.json to dist
-        run: |
-          echo "Files in current directory:"
-          ls -la ./dist
-          cp public/info.json ./dist/info.json
+        run: cp public/info.json ./dist/info.json
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
