@@ -6,7 +6,6 @@ on:
     branches: ["main"]
     paths:
       - "public/info.json"
-      - ".github/workflows/*.yml"
   workflow_dispatch:
 
 permissions:
@@ -71,7 +70,7 @@ jobs:
       - name: Copy info.json to dist
         run: |
           echo "Files in current directory:"
-          ls -la
+          ls -la ./dist
           cp public/info.json ./dist/info.json
 
       - name: Upload artifact
