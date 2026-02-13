@@ -20,6 +20,8 @@ concurrency:
 jobs:
   check-if-info-changed-only:
     runs-on: ubuntu-latest
+    outputs:
+      info_changed: ${{ steps.check.outputs.info_changed }}
     steps: 
       - uses: actions/checkout@v4
         with: 
@@ -44,7 +46,7 @@ jobs:
 
   build:
     needs: check-if-info-changed-only
-    if: ${{needs.check-if-info-changed-only.outputs.info_changed == 'true'}}
+    if: needs.check-if-info-changed-only.outputs.info_changed == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Download dist artifact
@@ -62,8 +64,8 @@ jobs:
           path: ./dist
 
   deploy:
-    needs: build
-    if: ${{needs.check-if-info-changed-only.outputs.info_changed == 'true'}}
+    needs: [build, check-if-info-changed-only]
+    if: needs.check-if-info-changed-only.outputs.info_changed == 'true'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
