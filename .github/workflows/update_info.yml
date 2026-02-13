@@ -44,7 +44,7 @@ jobs:
 
   build:
     needs: check-if-info-changed-only
-    if: needs.check-if-info-changed-only.outputs.info_changed == 'true'
+    if: ${{needs.check-if-info-changed-only.outputs.info_changed == 'true'}}
     runs-on: ubuntu-latest
     steps:
       - name: Download dist artifact
@@ -63,7 +63,7 @@ jobs:
 
   deploy:
     needs: build
-    if: needs.check-if-info-changed-only.outputs.info_changed == 'true'
+    if: ${{needs.check-if-info-changed-only.outputs.info_changed == 'true'}}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
